@@ -1,0 +1,124 @@
+<!DOCTYPE html> <html lang="pt-BR"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Missão Ciências - 6º Ano</title>
+
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+
+</head> <body> <header class="cabecalho"> <div class="logo">🔬 Missão Ciências</div> <p>Desafio do 6º Ano</p> </header>
+<main class="container">
+
+    <!-- Tela inicial -->
+    <section id="tela-inicial" class="tela ativa">
+        <div class="card inicio-card">
+            <div class="emoji-grande">🧪</div>
+
+            <h1>Missão Ciências!</h1>
+
+            <p>
+                Teste seus conhecimentos e descubra
+                quantos pontos você consegue conquistar!
+            </p>
+
+            <div class="regras">
+                <div>⭐ Acertou = +10 pontos</div>
+                <div>❤️ Você tem 3 vidas</div>
+                <div>🏆 Tente chegar ao final!</div>
+            </div>
+
+            <button id="btn-iniciar" class="btn btn-principal">
+                🚀 Começar Missão
+            </button>
+        </div>
+    </section>
+
+    <!-- Tela do jogo -->
+    <section id="tela-jogo" class="tela">
+
+        <div class="placar">
+            <div class="placar-item">
+                <span>⭐ Pontos</span>
+                <strong id="pontuacao">0</strong>
+            </div>
+
+            <div class="placar-item">
+                <span>❤️ Vidas</span>
+                <strong id="vidas">❤️❤️❤️</strong>
+            </div>
+
+            <div class="placar-item">
+                <span>📚 Questão</span>
+                <strong>
+                    <span id="questao-atual">1</span>/10
+                </strong>
+            </div>
+        </div>
+
+        <div class="barra-container">
+            <div id="barra-progresso" class="barra-progresso"></div>
+        </div>
+
+        <div class="card pergunta-card">
+
+            <span id="categoria" class="categoria">
+                Ciências
+            </span>
+
+            <h2 id="pergunta">
+                Pergunta aparecerá aqui
+            </h2>
+
+            <div id="alternativas" class="alternativas">
+                <!-- Alternativas inseridas pelo JavaScript -->
+            </div>
+
+            <div id="feedback" class="feedback"></div>
+
+            <button
+                id="btn-proxima"
+                class="btn btn-proxima escondido"
+            >
+                Próxima ➡️
+            </button>
+
+        </div>
+    </section>
+
+    <!-- Tela final -->
+    <section id="tela-final" class="tela">
+        <div class="card resultado-card">
+
+            <div id="emoji-resultado" class="emoji-grande">
+                🏆
+            </div>
+
+            <h1 id="titulo-resultado">
+                Missão concluída!
+            </h1>
+
+            <p id="mensagem-resultado">
+                Muito bem!
+            </p>
+
+            <div class="resultado-pontos">
+                <span>Sua pontuação:</span>
+                <strong id="pontuacao-final">0</strong>
+                <span>pontos</span>
+            </div>
+
+            <div id="classificacao" class="classificacao">
+                Cientista em treinamento! 🔬
+            </div>
+
+            <button id="btn-reiniciar" class="btn btn-principal">
+                🔄 Jogar novamente
+            </button>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>🔬 Missão Ciências • Projeto educativo para o 6º ano</p>
+</footer>
+
+</body> </html>

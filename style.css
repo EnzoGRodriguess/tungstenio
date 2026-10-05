@@ -1,0 +1,445 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+:root {
+--azul: #608ae6;
+--azul-escuro: #001b74;
+--roxo: #4c1f9b;
+--amarelo: #ffe062;
+--verde: #013b16;
+--vermelho: #630808;
+--branco: #ffffff;
+--fundo: #eef6ff;
+--texto: #2a3038;
+--cinza: #3f4752;
+}
+
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+
+font-family: 'Nunito', sans-serif;
+color: var(--texto);
+
+background:
+    radial-gradient(circle at 10% 20%, #dbeafe 0 8%, transparent 9%),
+    radial-gradient(circle at 90% 80%, #ede9fe 0 10%, transparent 11%),
+    linear-gradient(135deg, #eff6ff, #f5f3ff);
+
+
+}
+
+.cabecalho {
+width: 100%;
+padding: 20px;
+text-align: center;
+color: var(--branco);
+
+background: linear-gradient(
+    135deg,
+    var(--azul),
+    var(--roxo)
+);
+
+box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+
+
+}
+
+.logo {
+font-size: 1.8rem;
+font-weight: 800;
+}
+
+.cabecalho p {
+margin-top: 4px;
+font-weight: 600;
+opacity: 0.9;
+}
+
+.container {
+width: min(900px, 92%);
+margin: 35px auto;
+flex: 1;
+}
+
+.tela {
+display: none;
+}
+
+.tela.ativa {
+display: block;
+}
+
+.card {
+background: var(--branco);
+border-radius: 25px;
+padding: 35px;
+box-shadow: 0 15px 40px rgba(30, 64, 175, 0.12);
+}
+
+.inicio-card,
+.resultado-card {
+text-align: center;
+max-width: 650px;
+margin: 0 auto;
+}
+
+.emoji-grande {
+font-size: 5rem;
+margin-bottom: 10px;
+}
+
+h1 {
+color: var(--azul-escuro);
+font-size: 2.5rem;
+margin-bottom: 12px;
+}
+
+.inicio-card > p {
+color: var(--cinza);
+font-size: 1.1rem;
+line-height: 1.6;
+}
+
+.regras {
+display: grid;
+gap: 10px;
+margin: 25px auto;
+max-width: 400px;
+}
+
+.regras div {
+padding: 12px;
+border-radius: 12px;
+
+
+
+
+        "Semente"
+
+    ],
+
+    correta: 1
+
+},
+
+
+
+
+{
+
+background: #eff6ff;
+font-weight: 700;
+}
+
+.btn {
+border: none;
+border-radius: 14px;
+padding: 15px 25px;
+
+font-family: inherit;
+font-size: 1rem;
+font-weight: 800;
+
+cursor: pointer;
+transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+
+
+}
+
+.btn:hover {
+transform: translateY(-3px);
+}
+
+.btn:active {
+transform: translateY(0);
+}
+
+.btn-principal {
+color: var(--branco);
+background: linear-gradient(
+135deg,
+var(--azul),
+var(--roxo)
+);
+
+box-shadow: 0 7px 18px rgba(37, 99, 235, 0.3);
+
+
+}
+
+.placar {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 15px;
+margin-bottom: 15px;
+}
+
+.placar-item {
+padding: 15px;
+text-align: center;
+border-radius: 15px;
+background: var(--branco);
+box-shadow: 0 5px 15px rgba(30, 64, 175, 0.08);
+}
+
+.placar-item span {
+display: block;
+color: var(--cinza);
+font-size: 0.9rem;
+font-weight: 700;
+}
+
+.placar-item strong {
+display: block;
+margin-top: 4px;
+color: var(--azul-escuro);
+font-size: 1.2rem;
+}
+
+.barra-container {
+width: 100%;
+height: 12px;
+margin-bottom: 20px;
+
+overflow: hidden;
+border-radius: 20px;
+background: #dbeafe;
+
+
+}
+
+.barra-progresso {
+width: 10%;
+height: 100%;
+
+border-radius: 20px;
+        "Semente"
+    ],
+    correta: 1
+},
+
+{
+background: linear-gradient(
+    90deg,
+    var(--azul),
+    var(--roxo)
+);
+
+transition: width 0.4s ease;
+
+
+}
+
+.pergunta-card {
+text-align: center;
+}
+
+.categoria {
+display: inline-block;
+padding: 7px 15px;
+margin-bottom: 15px;
+
+color: #854d0e;
+background: #fef3c7;
+border-radius: 20px;
+
+font-size: 0.85rem;
+font-weight: 800;
+
+
+}
+
+#pergunta {
+margin-bottom: 25px;
+font-size: 1.5rem;
+line-height: 1.4;
+}
+
+.alternativas {
+display: grid;
+gap: 12px;
+}
+
+.alternativa {
+width: 100%;
+padding: 16px;
+
+border: 3px solid #dbeafe;
+border-radius: 15px;
+
+color: var(--texto);
+background: #f8fbff;
+
+font-family: inherit;
+font-size: 1rem;
+font-weight: 700;
+
+cursor: pointer;
+transition: all 0.2s;
+
+
+}
+
+.alternativa:hover:not(:disabled) {
+border-color: var(--azul);
+background: #eff6ff;
+transform: translateX(5px);
+}
+
+.alternativa:disabled {
+cursor: default;
+}
+
+.alternativa.correta {
+color: #166534;
+border-color: var(--verde);
+background: #dcfce7;
+}
+
+.alternativa.errada {
+color: #991b1b;
+border-color: var(--vermelho);
+background: #fee2e2;
+}
+
+.feedback {
+min-height: 30px;
+margin: 20px 0 10px;
+
+font-size: 1.1rem;
+font-weight: 800;
+
+
+}
+
+.feedback.acerto {
+color: #15803d;
+}
+
+.feedback.erro {
+color: #dc2626;
+}
+
+.btn-proxima {
+margin-top: 5px;
+color: var(--branco);
+background: var(--azul);
+}
+
+.escondido {
+display: none;
+}
+
+.resultado-pontos {
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+
+margin: 25px 0;
+color: var(--cinza);
+font-size: 1.1rem;
+
+
+}
+
+.resultado-pontos strong {
+color: var(--azul);
+font-size: 3rem;
+}
+
+.classificacao {
+padding: 15px;
+margin-bottom: 25px;
+
+border-radius: 15px;
+color: #713f12;
+background: #fef3c7;
+
+font-size: 1.1rem;
+font-weight: 800;
+
+
+}
+
+footer {
+padding: 20px;
+text-align: center;
+color: var(--cinza);
+font-size: 0.9rem;
+}
+
+/* Animação */
+@keyframes aparecer {
+from {
+opacity: 0;
+transform: translateY(15px);
+}
+
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+}
+
+.tela.ativa {
+animation: aparecer 0.4s ease;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+.container {
+margin: 20px auto;
+}
+
+.card {
+    padding: 25px 18px;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+.emoji-grande {
+    font-size: 4rem;
+}
+
+.placar {
+    gap: 8px;
+}
+
+.placar-item {
+    padding: 10px 5px;
+}
+
+.placar-item span {
+    font-size: 0.75rem;
+}
+
+.placar-item strong {
+    font-size: 1rem;
+}
+
+#pergunta {
+    font-size: 1.25rem;
+}
+
+.alternativa {
+    padding: 14px 10px;
+}
+
+
+}
