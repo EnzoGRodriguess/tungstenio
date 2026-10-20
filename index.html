@@ -1,159 +1,272 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arena de Desafios - 6º Ano</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arena de Desafios - 6º Ano</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="app">
-    <!-- CABEÇALHO / HEADER -->
-    <header class="game-header">
-      <div class="logo">ARENA <span>6º ANO</span></div>
-      <div class="header-controls">
-        <button id="sound-toggle-btn" class="icon-btn" aria-label="Som">🔊</button>
-        <button id="pause-btn" class="icon-btn hidden" aria-label="Pausar">⏸️</button>
-      </div>
+
+    <header class="app-header">
+        <div class="logo-container">
+            <span class="logo-icon">⚡</span>
+            <h1 class="logo-text">ARENA DE <span>DESAFIOS</span></h1>
+        </div>
+        <button id="btn-audio-toggle" class="btn-icon" title="Alternar Som">
+            <span id="audio-icon">🔊</span>
+        </button>
     </header>
 
-    <!-- TELA INICIAL -->
-    <section id="screen-home" class="screen active">
-      <div class="hero-card">
-        <h1>ARENA DE DESAFIOS</h1>
-        <p class="subtitle">Competição Educativa: Matemática, Ciências e Português</p>
-        
-        <div class="subject-badges">
-          <span class="badge math">🔢 Matemática</span>
-          <span class="badge science">🧪 Ciências</span>
-          <span class="badge portuguese">📖 Português</span>
+    <main class="app-container">
+
+        <section id="screen-home" class="screen active">
+            <div class="hero-banner">
+                <span class="badge">Educação + Arcade 🎮</span>
+                <h2>Desafie seus amigos na competição do 6º Ano!</h2>
+                <p>Matemática, Ciências e Língua Portuguesa em batalhas épicas para 2 equipes no mesmo dispositivo!</p>
+            </div>
+
+            <div class="subjects-grid">
+                <div class="subject-card math">
+                    <span class="card-icon">📐</span>
+                    <h3>Matemática</h3>
+                    <p>Frações, decimais, geometria, potenciação e problemas.</p>
+                </div>
+                <div class="subject-card science">
+                    <span class="card-icon">🔬</span>
+                    <h3>Ciências</h3>
+                    <p>Corpo humano, sistema solar, matéria e ecossistemas.</p>
+                </div>
+                <div class="subject-card portuguese">
+                    <span class="card-icon">📚</span>
+                    <h3>Português</h3>
+                    <p>Gramática, ortografia, pontuação e interpretação.</p>
+                </div>
+            </div>
+
+            <div class="home-actions">
+                <button id="btn-home-start" class="btn btn-primary btn-large">🚀 Começar Partida</button>
+                <button id="btn-home-how" class="btn btn-secondary">❓ Como Jogar</button>
+            </div>
+        </section>
+
+        <div id="modal-how" class="modal-overlay hidden">
+            <div class="modal-card">
+                <h3>❓ Como Jogar na Arena</h3>
+                <div class="instructions-content">
+                    <ol>
+                        <li><strong>2 Equipes no mesmo aparelho:</strong> Escolham os nomes e alternem a vez.</li>
+                        <li><strong>Minijogos Variados:</strong> Responda perguntas, teste sua memória, reflexo e velocidade.</li>
+                        <li><strong>Cronômetro:</strong> Cada turno tem tempo limite. Seja rápido para somar mais pontos!</li>
+                        <li><strong>Vitória:</strong> A equipe com maior pontuação acumulada ao fim das rodadas vence. Em caso de empate, teremos morte súbita!</li>
+                    </ol>
+                </div>
+                <button id="btn-close-how" class="btn btn-primary">Entendi, Vamos Lá!</button>
+            </div>
         </div>
 
-        <div class="menu-buttons">
-          <button id="btn-play" class="btn primary-btn">JOGAR</button>
-          <button id="btn-how-to-play" class="btn secondary-btn">COMO JOGAR</button>
-          <button id="btn-settings" class="btn secondary-btn">CONFIGURAÇÕES</button>
+        <section id="screen-setup" class="screen">
+            <h2 class="screen-title">⚙️ Configuração da Partida</h2>
+            
+            <form id="setup-form" onsubmit="return false;">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="team1-name">🔵 Equipe Azul (Time 1)</label>
+                        <input type="text" id="team1-name" value="Mestres do Saber" maxlength="18" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="team2-name">🟠 Equipe Laranja (Time 2)</label>
+                        <input type="text" id="team2-name" value="Gênios da Arena" maxlength="18" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="select-subject">📚 Matéria / Conteúdo</label>
+                        <select id="select-subject">
+                            <option value="all">🌟 Todas as Matérias (Misto)</option>
+                            <option value="math">📐 Apenas Matemática</option>
+                            <option value="science">🔬 Apenas Ciências</option>
+                            <option value="portuguese">📚 Apenas Português</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="select-turn-time">⏱️ Tempo por Turno</label>
+                        <select id="select-turn-time">
+                            <option value="20">20 segundos (Super Rápido)</option>
+                            <option value="30" selected>30 segundos (Padrão)</option>
+                            <option value="45">45 segundos (Tranquilo)</option>
+                            <option value="60">60 segundos (Extenso)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="select-rounds">🔄 Número de Rodadas por Equipe</label>
+                        <select id="select-rounds">
+                            <option value="2">2 Rodadas (Rápida)</option>
+                            <option value="3" selected>3 Rodadas (Recomendado)</option>
+                            <option value="5">5 Rodadas (Completa)</option>
+                            <option value="8">8 Rodadas (Maratona)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>🎮 Minijogos Ativos na Partida</label>
+                        <div class="minigame-checkboxes">
+                            <label class="chk-card">
+                                <input type="checkbox" value="quiz" checked>
+                                <span>⚡ Desafio Relâmpago (Perguntas)</span>
+                            </label>
+                            <label class="chk-card">
+                                <input type="checkbox" value="memory" checked>
+                                <span>🧩 Memória de Padrões</span>
+                            </label>
+                            <label class="chk-card">
+                                <input type="checkbox" value="pairs" checked>
+                                <span>🃏 Encontre os Pares</span>
+                            </label>
+                            <label class="chk-card">
+                                <input type="checkbox" value="reflex" checked>
+                                <span>🎯 Reflexo Relâmpago</span>
+                            </label>
+                            <label class="chk-card">
+                                <input type="checkbox" value="click" checked>
+                                <span>💥 Click Rush</span>
+                            </label>
+                        </div>
+                        <p id="setup-error" class="error-msg hidden">⚠️ Selecione pelo menos 1 minijogo para jogar!</p>
+                    </div>
+                </div>
+
+                <div class="setup-actions">
+                    <button id="btn-setup-back" class="btn btn-secondary">Voltar</button>
+                    <button id="btn-setup-start" class="btn btn-success btn-large">⚔️ Iniciar Batalha!</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="screen-game" class="screen">
+            
+            <div class="scoreboard">
+                <div id="card-team1" class="team-score-card team-blue">
+                    <span class="team-badge">TIME 1</span>
+                    <h3 id="score-t1-name">Equipe Azul</h3>
+                    <div class="score-number" id="score-t1-pts">0</div>
+                    <span class="pts-label">pontos</span>
+                </div>
+
+                <div class="game-center-status">
+                    <div class="round-indicator" id="round-indicator">Rodada 1 / 3</div>
+                    <div class="timer-display" id="timer-display">30</div>
+                    <div class="turn-announcer" id="turn-announcer">Vez da Equipe Azul</div>
+                </div>
+
+                <div id="card-team2" class="team-score-card team-orange">
+                    <span class="team-badge">TIME 2</span>
+                    <h3 id="score-t2-name">Equipe Laranja</h3>
+                    <div class="score-number" id="score-t2-pts">0</div>
+                    <span class="pts-label">pontos</span>
+                </div>
+            </div>
+
+            <div class="game-controls-bar">
+                <div class="minigame-title-badge" id="minigame-title">Minijogo Carregando...</div>
+                <div class="control-btns">
+                    <button id="btn-pause" class="btn btn-small btn-warning">⏸️ Pausar</button>
+                    <button id="btn-quit" class="btn btn-small btn-danger">🚪 Sair</button>
+                </div>
+            </div>
+
+            <div class="interactive-arena" id="interactive-arena">
+            </div>
+
+            <div class="turn-feedback" id="turn-feedback">Clique em "Iniciar Turno" para começar!</div>
+
+            <div class="turn-actions">
+                <button id="btn-start-turn" class="btn btn-success btn-large">▶️ Iniciar Desafio do Turno</button>
+            </div>
+        </section>
+
+        <div id="modal-pause" class="modal-overlay hidden">
+            <div class="modal-card">
+                <h3>⏸️ JOGO PAUSADO</h3>
+                <p>O tempo e o minijogo estão paralisados.</p>
+                <div class="modal-actions">
+                    <button id="btn-resume" class="btn btn-primary btn-large">▶️ Continuar Jogando</button>
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
 
-    <!-- TELA DE CONFIGURAÇÃO -->
-    <section id="screen-setup" class="screen">
-      <div class="card">
-        <h2>Configurar Partida</h2>
-        <form id="setup-form">
-          <div class="form-group">
-            <label for="teams-count">Número de Equipes:</label>
-            <select id="teams-count">
-              <option value="2" selected>2 Equipes</option>
-              <option value="3">3 Equipes</option>
-              <option value="4">4 Equipes</option>
-            </select>
-          </div>
-
-          <div id="teams-inputs-container" class="form-group-grid">
-            <!-- Gerado via JS -->
-          </div>
-
-          <div class="form-group">
-            <label for="rounds-count">Número de Rodadas:</label>
-
-            <select id="rounds-count">
-              <option value="3">3 Rodadas</option>
-              <option value="6" selected>6 Rodadas</option>
-              <option value="9">9 Rodadas</option>
-            </select>
-          </div>
-
-          <div class="form-buttons">
-            <button type="button" id="btn-back-home" class="btn secondary-btn">Voltar</button>
-            <button type="submit" class="btn primary-btn">Iniciar Arena</button>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <!-- TELA "COMO JOGAR" -->
-    <section id="screen-instructions" class="screen">
-      <div class="card">
-        <h2>Como Jogar</h2>
-        <div class="instructions-list">
-          <div class="instruction-item">
-            <h3>🔢 Sequência Numérica (Matemática)</h3>
-            <p>Memorize e repita a sequência de múltiplos e números que acendem no painel.</p>
-          </div>
-          <div class="instruction-item">
-            <h3>🧪 Caça aos Elementos (Ciências)</h3>
-            <p>Clique rápido nos alvos das células, ecossistemas e planetas antes que desapareçam!</p>
-          </div>
-          <div class="instruction-item">
-            <h3>📖 Pares Gramaticais (Português)</h3>
-            <p>Encontre os pares correspondentes de substantivos, adjetivos e sinônimos.</p>
-          </div>
-          <div class="instruction-item">
-            <h3>⚡ Reação Científica (Reflexo)</h3>
-            <p>Aguarde o sinal verde no laboratório para reagir no menor tempo possível!</p>
-          </div>
-        </div>
-        <button id="btn-instructions-back" class="btn primary-btn">Entendi!</button>
-      </div>
-    </section>
-
-    <!-- TELA PRINCIPAL DA PARTIDA -->
-    <section id="screen-game" class="screen">
-      <!-- PLACAR SUPERIOR -->
-      <div id="scoreboard" class="scoreboard"></div>
-
-      <!-- PAINEL DA RODADA -->
-      <div class="round-bar">
-        <div id="round-indicator" class="round-info">Rodada 1/6</div>
-        <div id="turn-indicator" class="turn-info">Vez da Equipe: <span>--</span></div>
-        <div id="timer-display" class="timer-info">⏱️ --s</div>
-      </div>
-
-      <!-- ÁREA CENTRAL DO MINIJOGO -->
-      <div class="minigame-container">
-        <div id="minigame-header" class="minigame-header">
-          <h3 id="minigame-title">Carregando...</h3>
-          <p id="minigame-desc">Aguarde as instruções do desafio.</p>
+        <div id="modal-quit" class="modal-overlay hidden">
+            <div class="modal-card">
+                <h3>🚪 Deseja realmente sair?</h3>
+                <p>O progresso atual da partida será perdido.</p>
+                <div class="modal-actions">
+                    <button id="btn-confirm-quit" class="btn btn-danger">Sim, Sair da Partida</button>
+                    <button id="btn-cancel-quit" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </div>
         </div>
 
-        <div id="minigame-stage" class="minigame-stage">
-          <!-- O conteúdo interativo do jogo entra aqui -->
+        <div id="modal-turn-result" class="modal-overlay hidden">
+            <div class="modal-card">
+                <h3 id="result-turn-title">Fim do Turno!</h3>
+                <p id="result-team-name">Equipe Azul</p>
+                <div class="result-pts-box">
+                    <span class="label">Pontos Obtidos neste turno:</span>
+                    <span class="value" id="result-turn-pts">+0</span>
+                </div>
+                <p id="result-turn-desc" class="result-desc"></p>
+                <button id="btn-next-turn" class="btn btn-success btn-large">Próxima Equipe ➔</button>
+            </div>
         </div>
 
-        <div class="minigame-actions">
-          <button id="btn-start-challenge" class="btn primary-btn">Começar Desafio</button>
-        </div>
-      </div>
-    </section>
+        <section id="screen-gameover" class="screen">
+            <div class="gameover-card">
+                <div class="winner-crown">🏆</div>
+                <h2 id="winner-title">EQUIPE VENCEDORA!</h2>
+                <h1 id="winner-name" class="winner-team-name">Mestres do Saber</h1>
 
-    <!-- TELA DE RESULTADO DA RODADA -->
-    <div id="modal-round-result" class="modal hidden">
-      <div class="modal-content card">
-        <h2 id="round-result-title">Fim do Desafio!</h2>
-        <div id="round-result-details"></div>
-        <button id="btn-next-round" class="btn primary-btn">Próxima Equipe / Rodada</button>
-      </div>
-    </div>
+                <div class="final-scores">
+                    <div class="final-score-box blue">
+                        <span id="final-t1-name">Equipe Azul</span>
+                        <strong id="final-t1-pts">0 pts</strong>
+                    </div>
+                    <div class="vs-badge">VS</div>
+                    <div class="final-score-box orange">
+                        <span id="final-t2-name">Equipe Laranja</span>
+                        <strong id="final-t2-pts">0 pts</strong>
+                    </div>
+                </div>
 
-    <!-- TELA FINAL / CAMPEÃO -->
-    <section id="screen-gameover" class="screen">
-      <div class="card winner-card">
-        <h1 class="trophy">🏆</h1>
-        <h2 id="winner-team-name">Equipe Vencedora!</h2>
-        <p id="winner-score-display">Com 0 pontos</p>
+                <div class="game-history-container">
+                    <h3>📜 Histórico da Batalha</h3>
+                    <div class="history-table-wrapper">
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Rodada</th>
+                                    <th>Equipe</th>
+                                    <th>Minijogo</th>
+                                    <th>Pontos</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-tbody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-        <div id="final-scoreboard" class="final-scores"></div>
+                <div class="gameover-actions">
+                    <button id="btn-restart" class="btn btn-success btn-large">🔄 Jogar Novamente</button>
+                    <button id="btn-menu" class="btn btn-secondary">🏠 Menu Principal</button>
+                </div>
+            </div>
+        </section>
 
-        <div class="menu-buttons">
-          <button id="btn-restart" class="btn primary-btn">Jogar Novamente</button>
-          <button id="btn-main-menu" class="btn secondary-btn">Menu Principal</button>
-        </div>
-      </div>
-    </section>
-  </div>
+    </main>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
